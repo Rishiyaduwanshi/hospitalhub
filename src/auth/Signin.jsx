@@ -8,6 +8,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const Signin = () => {
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
+  isAuthenticated && navigate("/admin/dashboard");
   const [formData, setFormData] = useState({ usernameOrEmail: "", password: "" });
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,8 +23,8 @@ const Signin = () => {
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) throw new Error("Invalid credentials");
-
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.message ?? "Invalid credentials");
       toast.success("Signin successful!");
       navigate("/admin/dashboard");
       window.location.reload();

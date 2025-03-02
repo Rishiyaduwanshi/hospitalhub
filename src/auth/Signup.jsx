@@ -24,23 +24,29 @@ const Signup = () => {
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) throw new Error("Signup failed!");
-      toast.success("Signup successful! Please login.");
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Signup failed"); // ✅ Backend Se Aaya Message Dikhayenge
+      }
+      toast.success("Signup successful! Please sign in.");
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message); // ✅ Backend Ka Actual Error Message Show Hoga
     }
   };
 
   return (
-    <div className="container mx-auto max-w-md mt-10">
-      <h2 className="text-2xl font-bold text-center mb-4">Admin Signup</h2>
-      <form className="bg-white p-6 rounded shadow-lg" onSubmit={handleSubmit}>
-        <input type="text" name="name" placeholder="Name" onChange={handleChange} required className="w-full p-2 mb-2 border rounded" />
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} required className="w-full p-2 mb-2 border rounded" />
-        <input type="text" name="username" placeholder="Username" onChange={handleChange} required className="w-full p-2 mb-2 border rounded" />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} required className="w-full p-2 mb-4 border rounded" />
-        <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">Signup</button>
-      </form>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 border-2 border-gray-200">
+      <div className="bg-white p-6 rounded shadow-md w-96">
+        <h2 className="text-2xl font-bold mb-4 text-center">Signup</h2>
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <input type="text" name="name" placeholder="Full Name" required className="border p-2 w-full" onChange={handleChange} />
+          <input type="email" name="email" placeholder="Email" required className="border p-2 w-full" onChange={handleChange} />
+          <input type="text" name="username" placeholder="Username" required className="border p-2 w-full" onChange={handleChange} />
+          <input type="password" name="password" placeholder="Password" required className="border p-2 w-full" onChange={handleChange} />
+          <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-full">Signup</button>
+        </form>
+      </div>
     </div>
   );
 };
