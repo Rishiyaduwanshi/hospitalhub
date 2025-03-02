@@ -31,6 +31,25 @@ const AdminDashboard = () => {
     }
   };
 
+  const handleDelete = async (id) => {
+    if (!window.confirm("Are you sure you want to delete this hospital?")) return;
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/hospitals/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
+
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.message || "Failed to delete hospital");
+
+      toast.success("Hospital deleted successfully!");
+      fetchHospitals(); // 🔄 Refresh List
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   const filteredHospitals = hospitals.filter((hospital) =>
     hospital.name.toLowerCase().includes(search.toLowerCase())
   );
@@ -87,7 +106,9 @@ const AdminDashboard = () => {
                         <Link to={`/admin/editHospital/${hospital._id}`}>
                           <button className="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">Edit</button>
                         </Link>
-                        <button className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
+                        <button onClick={() => handleDelete(hospital._id)} className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   ))
