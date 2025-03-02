@@ -4,6 +4,7 @@ export const CITIES = [
   "Kolkata",
   "Bengaluru",
   "Chennai",
+  "Darbhanga",
   "Hyderabad",
   "Pune",
   "Lucknow",
