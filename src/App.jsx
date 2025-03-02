@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Signin from "./auth/Signin";
 import Signup from "./auth/Signup";
 import AdminDashboard from "./admin/AdminDashboard";
+import AddHospital from "./admin/AddHospital";
 
 function App() {
   return (
@@ -19,9 +20,22 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
-
-          {/* ✅ Protected Route for Admin Dashboard */}
-          <Route path="/admin/dashboard" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+          <Route
+            path="/admin/dashboard"
+            element={
+              <ProtectedRoute>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/addHospital"
+            element={
+              <ProtectedRoute>
+                <AddHospital />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
     </AuthProvider>
