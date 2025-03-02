@@ -9,6 +9,7 @@ import Signin from "./auth/Signin";
 import Signup from "./auth/Signup";
 import AdminDashboard from "./admin/AdminDashboard";
 import AddHospital from "./admin/AddHospital";
+import EditHospital from "./admin/EditHospital";
 
 function App() {
   return (
@@ -33,6 +34,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <AddHospital />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/editHospital/:id"
+            element={
+              <ProtectedRoute>
+                <EditHospital />
               </ProtectedRoute>
             }
           />

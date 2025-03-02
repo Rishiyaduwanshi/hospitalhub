@@ -17,7 +17,7 @@ const AdminDashboard = () => {
     setLoading(true);
     try {
       const response = await fetch(`${API_BASE_URL}/hospitals`, {
-        credentials: "include", // ✅ Cookies-Based Auth
+        credentials: "include",
       });
 
       if (!response.ok) throw new Error("Failed to fetch hospitals");
@@ -71,7 +71,6 @@ const AdminDashboard = () => {
                   <th className="p-3">Image</th>
                   <th className="p-3">Name</th>
                   <th className="p-3">City</th>
-                  <th className="p-3">State</th>
                   <th className="p-3">Actions</th>
                 </tr>
               </thead>
@@ -84,9 +83,10 @@ const AdminDashboard = () => {
                       </td>
                       <td className="p-3">{hospital.name}</td>
                       <td className="p-3">{hospital.city}</td>
-                      <td className="p-3">{hospital.state}</td>
                       <td className="p-3 flex space-x-2">
-                        <button className="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">Edit</button>
+                        <Link to={`/admin/editHospital/${hospital._id}`}>
+                          <button className="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600">Edit</button>
+                        </Link>
                         <button className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Delete</button>
                       </td>
                     </tr>

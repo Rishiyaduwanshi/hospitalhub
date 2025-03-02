@@ -11,18 +11,6 @@ export const CITIES = [
   "Chandigarh",
 ];
 
-export const STATES = [
-  "Delhi",
-  "Maharashtra",
-  "West Bengal",
-  "Karnataka",
-  "Tamil Nadu",
-  "Telangana",
-  "Uttar Pradesh",
-  "Gujarat",
-  "Punjab",
-];
-
 export const SPECIALITIES = [
   "Heart",
   "Brain",
