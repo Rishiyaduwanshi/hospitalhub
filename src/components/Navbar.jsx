@@ -28,7 +28,6 @@ const Navbar = () => {
         >
           <Link to="/" className="hover:text-gray-200" onClick={() => setIsOpen(false)}>Home</Link>
           <Link to="/about" className="hover:text-gray-200" onClick={() => setIsOpen(false)}>About</Link>
-          <Link to="/contact" className="hover:text-gray-200" onClick={() => setIsOpen(false)}>Contact</Link>
 
           {isAuthenticated ? (
             <>

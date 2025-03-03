@@ -11,7 +11,7 @@ import AdminDashboard from "./admin/AdminDashboard";
 import AddHospital from "./admin/AddHospital";
 import EditHospital from "./admin/EditHospital";
 import HospitalDetails from "./pages/HospitalDetails";
-
+import About from "./pages/About";
 function App() {
   return (
     <AuthProvider>
@@ -23,6 +23,7 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/hospital/:id" element={<HospitalDetails />} />
+          <Route path="/about" element={<About />} />
           <Route
             path="/admin/dashboard"
             element={
