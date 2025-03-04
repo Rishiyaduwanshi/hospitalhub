@@ -13,6 +13,12 @@ Admins can **add, edit, and delete hospitals**, while users can explore **detail
 
 ---
 
+## **👤 Admin Sigin Details**
+**Username:** rishi  
+**Password:** 12345678  
+
+---
+
 ## **🛠️ Tech Stack**
 ✅ **Frontend:** React.js, Context API, Tailwind CSS  
 ✅ **Backend:** Node.js, Express.js, MongoDB  
